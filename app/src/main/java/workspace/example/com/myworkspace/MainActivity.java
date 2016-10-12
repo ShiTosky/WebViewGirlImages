@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.list_view)
     public ListView mListView;
     private List<ClassifyBean.TngouBean> mDataList;
-
+    private long mFirstBackTimes ;
+    private static final int CONSTANT_TIME = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +104,16 @@ public class MainActivity extends AppCompatActivity {
         TextView mTextView;
         public ViewHolder(View root){
             mTextView = (TextView) root.findViewById(R.id.list_view_title);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis()-mFirstBackTimes>CONSTANT_TIME){
+            Toast.makeText(this, "再次点击,退出应用", Toast.LENGTH_SHORT).show();
+            mFirstBackTimes = System.currentTimeMillis();
+        }else{
+            finish();
         }
     }
 }
