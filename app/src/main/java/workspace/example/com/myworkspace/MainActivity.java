@@ -20,6 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.list_view)
@@ -35,6 +36,19 @@ public class MainActivity extends AppCompatActivity {
         loadFromServer();
         mListView.setOnItemClickListener(mOnItemClickListener);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
+
     private AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

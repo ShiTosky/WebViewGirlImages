@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by ShiLiang on 2016/10/12.
  */
@@ -16,6 +18,8 @@ public class SexyGirlApplication extends Application {
     public void onCreate() {
         super.onCreate();
         NetworkManager.init(getApplicationContext());
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
         getChannel();
     }
     public void getChannel() {
