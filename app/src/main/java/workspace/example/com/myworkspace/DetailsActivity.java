@@ -48,6 +48,7 @@ public class DetailsActivity extends AppCompatActivity{
 
 
         initWebViewClient();
+
     }
 
     private void initWebViewClient() {
